@@ -11,14 +11,7 @@ const playerToggle = document.getElementById('player-toggle');
 
 const songs = [
   'Pain.mp3',
-  'Вечная жизнь.mp3',
-  'Грезы.mp3',
-  'Грустная сука.mp3',
-  'Зеркало.mp3',
-  'Малыш.mp3',
-  'Пламя.mp3',
-  'Разобьюсь.mp3',
-  'Яд.mp3'
+  'Romeo.mp3'
 ];
 
 let currentSongIndex = 0;
