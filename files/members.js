@@ -8,11 +8,11 @@ const profiles = {
     desc: 'but charming',
   },
   shy: {
-    img: 'https://i.pinimg.com/736x/88/d3/19/88d31956946d35f5bb4dce1f6ff03002.jpg',
+    img: 'https://i.pinimg.com/736x/3d/e6/45/3de64531546bb92edc7f9fc0988664ff.jpgg',
     desc: 'his grave',
   },
   motori: {
-    img: 'https://i.pinimg.com/736x/f1/af/4d/f1af4dde05c9d981dde97d78c1c36440.jpg',
+    img: 'https://i.pinimg.com/736x/c9/2f/64/c92f6449560ecdf169d907c95ffc55ee.jpg',
     desc: 'バイパーバイパーダブルrrバイパーカイインゲル',
   },
   hardline: {
@@ -20,8 +20,8 @@ const profiles = {
     desc: 'if the wolf is spinning',
   },
   propavshiy: {
-    img: 'https://i.pinimg.com/736x/8b/71/8e/8b718e4cb41e7d08761bb75e920f7bfa.jpg',
-    desc: 's1n1f pidor',
+    img: 'https://i.pinimg.com/736x/63/78/6f/63786fd8cdf31daf266d8e51a21a553b.jpg',
+    desc: 'the deceased',
   },
 
 };
