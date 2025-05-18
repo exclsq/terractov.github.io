@@ -8,7 +8,7 @@ const profiles = {
     desc: 'but charming',
   },
   shy: {
-    img: 'https://i.pinimg.com/736x/3d/e6/45/3de64531546bb92edc7f9fc0988664ff.jpgg',
+    img: 'https://i.pinimg.com/736x/3d/e6/45/3de64531546bb92edc7f9fc0988664ff.jpg',
     desc: 'his grave',
   },
   motori: {
