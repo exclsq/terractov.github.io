@@ -13,7 +13,7 @@ const profiles = {
   },
   motori: {
     img: 'https://i.pinimg.com/736x/c9/2f/64/c92f6449560ecdf169d907c95ffc55ee.jpg',
-    desc: 'バイパーバイパーダブルrrバイパーカイインゲル',
+    desc: 'viperr / double rr. xd',
   },
   hardline: {
     img: 'https://i.pinimg.com/736x/e3/48/98/e34898ffd1340b24e82c148e6171f031.jpg',
