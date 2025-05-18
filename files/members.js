@@ -4,20 +4,20 @@ const profileDesc = document.getElementById('profile-desc');
 
 const profiles = {
   cute: {
-    img: 'https://i.pinimg.com/736x/54/81/2b/54812b31bbdac831682fc85b04864678.jpg',
-    desc: 'The local Chatlan faggot',
+    img: 'https://i.pinimg.com/736x/8f/86/15/8f8615668e896eed0ad8b7b767dbd804.jpg',
+    desc: 'but charming',
   },
   shy: {
-    img: 'https://i.pinimg.com/736x/8a/98/c8/8a98c8301ac99f206eb2a731aa93803f.jpg',
-    desc: 'gay fucker',
+    img: 'https://i.pinimg.com/736x/85/70/57/8570570d263d8f02282c1ba0accf3c8f.jpg',
+    desc: 'his grave',
   },
   motori: {
-    img: 'https://i.pinimg.com/736x/99/49/5b/99495b57ad4a3ac34573f63b80493e84.jpg',
-    desc: 'dildo lover',
+    img: 'https://i.pinimg.com/736x/f1/af/4d/f1af4dde05c9d981dde97d78c1c36440.jpg',
+    desc: 'バイパーバイパーダブルrrバイパーカイインゲル',
   },
   hardline: {
-    img: 'https://i.pinimg.com/736x/cc/e6/4e/cce64e18c15c55e96844f8f280ec770d.jpg',
-    desc: 'When Leo fucked, he didnt think twice',
+    img: 'https://i.pinimg.com/736x/e3/48/98/e34898ffd1340b24e82c148e6171f031.jpg',
+    desc: 'if the wolf is spinning',
   }
 
 };
