@@ -14,8 +14,6 @@ const songs = [
   'mydedlegend.mp3',
   'dapoxeptamne.mp3',
   'yeyo.mp3',
-  'katyxa.mp3',
-  'passion-for-smoking.mp3',
   'bipolar.mp3',
 ];
 
