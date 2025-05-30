@@ -1,0 +1,518 @@
+﻿<html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>swaghunting.ru</title>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&amp;display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      overflow-x: hidden;
+    }
+    body {
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    /* Глитч-анимация для фона */
+    .glitch-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      opacity: 0.38;
+      mix-blend-mode: lighten;
+    }
+    .glitch-dot {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      opacity: 0.17;
+      animation: glitch-dot-move 2.5s infinite linear;
+      will-change: transform, opacity;
+    }
+    @keyframes glitch-dot-move {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.17;
+      }
+      10% {
+        opacity: 0.32;
+      }
+      35% {
+        transform: translateY(-8px) scale(1.2);
+        opacity: 0.44;
+      }
+      65% {
+        opacity: 0.23;
+      }
+      80% {
+        transform: translateY(6px) scale(0.95);
+        opacity: 0.38;
+      }
+      100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.17;
+      }
+    }
+    /* ===== LOADER START ===== */
+    .loader-overlay {
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s cubic-bezier(.4,.1,.4,1);
+    }
+    .loader-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: -60px;
+    }
+    .dots {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      margin-bottom: 14px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: #363636;
+      border-radius: 50%;
+      opacity: 0.17;
+      transition: opacity 0.18s;
+    }
+    .dot1 { animation: dot-fade 1.05s infinite; animation-delay: 0s;}
+    .dot2 { animation: dot-fade 1.05s infinite; animation-delay: 0.23s;}
+    .dot3 { animation: dot-fade 1.05s infinite; animation-delay: 0.46s;}
+    @keyframes dot-fade {
+      0%   { opacity: 0.17;}
+      10%  { opacity: 0.9;}
+      35%  { opacity: 0.9;}
+      50%  { opacity: 0.17;}
+      100% { opacity: 0.17;}
+    }
+    .loading-text {
+      font-size: 1rem;
+      letter-spacing: 0.25em;
+      color: #b8eecb;
+      font-family: 'Playfair Display', serif;
+      opacity: 0.8;
+    }
+    /* ===== LOADER END ===== */
+    .hero {
+      width: 100vw;
+      height: 100vh;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-title-wrap {
+      width: 70vw;
+      min-width: 400px;
+      max-width: 900px;
+      margin: 0 auto 36px auto;
+      text-align: center;
+      position: relative;
+    }
+    .hero-title-line {
+      border: none;
+      border-top: 1px solid #222;
+      width: 100%;
+      margin: 0 auto;
+      height: 1px;
+      background: transparent;
+    }
+    .hero-title {
+      font-size: 3.8rem;
+      letter-spacing: 0.08em;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      margin: 38px 0 38px 0;
+      font-weight: 400;
+      z-index: 2;
+      position: relative;
+    }
+    .hero-menu {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      justify-content: center;
+      width: 100%;
+      margin-top: 22px;
+      margin-bottom: 0;
+    }
+    .hero-menu-btn {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.09rem;
+      color: #bbb;
+      background: #000;
+      border: 1px solid #222;
+      border-radius: 0;
+      padding: 12px 40px 10px 40px;
+      margin: 0;
+      letter-spacing: 0.18em;
+      cursor: pointer;
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+      outline: none;
+      position: relative;
+      z-index: 1;
+      box-sizing: border-box;
+      background-image: url('data:image/svg+xml;utf8,<svg width="100" height="19" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 Q50 19 100 10" fill="none" stroke="white" stroke-width="0.7" opacity="0.10"/></svg>');
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: 94% 13px;
+      text-shadow: none;
+      font-weight: 400;
+      text-align: center;
+    }
+    .hero-menu-btn span {
+      color: #bbb;
+      letter-spacing: 0.18em;
+      font-size: 1.09rem;
+    }
+    .hero-menu-btn:hover,
+    .hero-menu-btn:focus {
+      border-color: #fff;
+      color: #fff;
+      background: #181818;
+    }
+    @media (max-width: 1200px) {
+      .hero-title-wrap { width: 92vw; min-width: 0; }
+      .hero-title { font-size: 2.3rem; }
+      .hero-menu { gap: 10px;}
+      .hero-menu-btn { font-size: 1rem; padding: 9px 20px 8px 20px; }
+    }
+    @media (max-width: 800px) {
+      .hero-title-wrap { width: 98vw; }
+      .hero-title { font-size: 1.7rem; }
+      .hero-menu { flex-wrap: wrap; gap: 5px;}
+      .hero-menu-btn { padding: 7px 7px 6px 7px; font-size: 0.89rem;}
+    }
+
+    .scroll-down {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1rem;
+      color: #888;
+      opacity: 0.28;
+      letter-spacing: 0.19em;
+      animation: arrow-blink 1.3s infinite;
+      user-select: none;
+      pointer-events: none;
+    }
+    @keyframes arrow-blink {
+      0% { opacity: 0.28; }
+      40% { opacity: 0.55; }
+      100% { opacity: 0.28; }
+    }
+    .characters-section {
+      width: 100%;
+      margin: 0 auto;
+      margin-top: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 400px;
+      z-index: 2;
+    }
+    .cats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 88px 32px;
+      justify-items: center;
+      margin-bottom: 40px;
+      width: 100%;
+      max-width: 1320px;
+    }
+    .cat-card {
+      width: 335px;
+      min-height: 340px;
+      background: rgba(0,0,0,0.82);
+      border-radius: 18px;
+      padding: 28px 16px 15px 16px;
+      box-shadow: 0 1px 14px 0 rgba(0,0,0,0.18);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(70px) scale(0.97);
+      pointer-events: none;
+      transition:
+        opacity 2.6s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 2.6s cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .cat-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+    .cat-card.visible:nth-child(1) { transition-delay: 0.38s; }
+    .cat-card.visible:nth-child(2) { transition-delay: 0.9s; }
+    .cat-card.visible:nth-child(3) { transition-delay: 1.42s; }
+    .cat-card.visible:nth-child(4) { transition-delay: 1.94s; }
+    .cat-card.visible:nth-child(5) { transition-delay: 2.46s; }
+    .cat-card.visible:nth-child(6) { transition-delay: 2.98s; }
+    .cat-card.visible:nth-child(7) { transition-delay: 3.5s; }
+    .cat-card.visible:nth-child(8) { transition-delay: 4.02s; }
+    .cat-card.visible:nth-child(9) { transition-delay: 4.54s; }
+    .cat-avatar {
+      width: 134px;
+      height: 134px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: none; /* убрана белая рамка */
+      margin-bottom: 18px;
+      margin-top: 0;
+      box-shadow: 0 1px 8px 0 rgba(0,0,0,0.20);
+      background: #0a0a0a;
+    }
+    .cat-name {
+      font-size: 1.22rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      margin: 0 0 6px 0;
+      color: #fff;
+      position: relative;
+      text-shadow: 0 2px 10px #000c;
+    }
+    .cat-subtitle {
+      font-size: 1.07rem;
+      font-weight: 400;
+      color: #bdbdbd;
+      margin-bottom: 18px;
+      font-style: italic;
+      margin-top: 1px;
+      letter-spacing: 0.1em;
+      text-shadow: 0 1px 6px #000c;
+    }
+    .cat-desc {
+      font-size: 0.99rem;
+      color: #bdbdbd;
+      margin: 0;
+      margin-top: 8px;
+      min-height: 28px;
+      font-style: italic;
+      text-shadow: 0 1px 6px #000c;
+    }
+    hr.cat-divider {
+      border: none;
+      border-top: 1px solid #555;
+      width: 86px;
+      margin: 14px auto 10px auto;
+    }
+    @media (max-width: 1100px) {
+      .cats-grid { grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 750px) {
+      .cat-card { width: 96vw; max-width: 360px;}
+      .cats-grid { grid-template-columns: 1fr;}
+    }
+
+    /* ==== СТИЛЬНЫЙ МИНИМАЛИСТИЧНЫЙ СКРОЛЛБАР ==== */
+    ::-webkit-scrollbar {
+      width: 6px;
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(135deg, #b8eecb 0%, #181818 100%);
+      border-radius: 8px;
+      min-height: 40px;
+      box-shadow: 0 3px 12px rgba(184,238,203,0.13);
+      transition: background 0.3s;
+      border: 1.2px solid #2a2a2a;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(135deg, #b8eecb 0%, #fed6e3 100%);
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 8px;
+    }
+
+    /* Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #000000 #181818;
+    }
+    /* ==== КОНЕЦ СТИЛЬНОГО СКРОЛЛБАРА ==== */
+  </style>
+</head>
+<body>
+  <!-- LOADER OVERLAY -->
+  <div class="loader-overlay" id="loaderOverlay">
+    <div class="loader-menu">
+      <div class="dots">
+        <span class="dot dot1"></span>
+        <span class="dot dot2"></span>
+        <span class="dot dot3"></span>
+      </div>
+      <div class="loading-text">LOADING</div>
+    </div>
+  </div>
+  <!-- /LOADER OVERLAY -->
+  <div class="glitch-bg" id="glitchBg"></div>
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-title-wrap">
+        <hr class="hero-title-line">
+        <div class="hero-title">swaghunting.ru</div>
+        <hr class="hero-title-line">
+      </div>
+      <div class="hero-menu">
+        <button class="hero-menu-btn"><span>AKURU</span></button>
+        <button class="hero-menu-btn"><span>INTERHUNTING</span></button>
+        <button class="hero-menu-btn"><span>PSYHOZ</span></button>
+        <button class="hero-menu-btn"><span>EVIL</span></button>
+        <button class="hero-menu-btn"><span>ROYZ</span></button>
+        <button class="hero-menu-btn"><span>BARKO</span></button>
+      </div>
+    </div>
+    <div class="scroll-down">↓</div>
+  </div>
+  <div class="characters-section">
+    <div class="cats-grid">
+      <div class="cat-card">
+        <img class="cat-avatar" src="736x/0b/b9/df/0bb9df53aaf1172da0125fdfa9de5d7f.jpg" alt="STEBBIN">
+        <div class="cat-name">AKURU</div>
+        <div class="cat-subtitle">Sleep</div>
+        <hr class="cat-divider">
+        <div class="cat-desc">I don't want to talk about it @AEdoxbin</div>
+      </div>
+      <div class="cat-card">
+        <img class="cat-avatar" src="https://cdn.discordapp.com/attachments/1375846531147763745/1377916753832837130/41b31ce02c795c54.png?ex=683ab47a&is=683962fa&hm=930d768fd3fd58eabc5c5b4ad1052c882c504c6efd958a227f157214d2149739&.jpg" alt="SALMON">
+        <div class="cat-name">INTERHUNTING</div>
+        <div class="cat-subtitle">Dead End</div>
+        <hr class="cat-divider">
+        <div class="cat-desc">The one and only. Salmon of Seas</div>
+      </div>
+      <div class="cat-card">
+        <img class="cat-avatar" src="data:image/jpeg;base64,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" alt="SALMON">
+        <div class="cat-name">PSYHOZ</div>
+        <div class="cat-subtitle">Cry</div>
+        <hr class="cat-divider">
+        <div class="cat-desc">god syndrom</div>
+      </div>
+      <div class="cat-card">
+        <img class="cat-avatar" src="736x/bb/95/8f/bb958f992ef0b84b767c8d7df7032153.jpg" alt="PEER">
+        <div class="cat-name">EVIL</div>
+        <div class="cat-subtitle">Code</div>
+        <hr class="cat-divider">
+        <div class="cat-desc">we hate</div>
+      </div>
+       <div class="cat-card">
+        <img class="cat-avatar" src="WJLYNC8/2025-05-29-094300567.png" alt="PEER">
+        <div class="cat-name">Royz</div>
+        <div class="cat-subtitle">Mrr</div>
+        <hr class="cat-divider">
+        <div class="cat-desc">bog.</div>
+      </div>
+      <div class="cat-card">
+        <img class="cat-avatar" src="Nng9nLDj/2025-05-29-093257348.png" alt="D">
+        <div class="cat-name">Barko</div>
+        <div class="cat-subtitle">markisa</div>
+        <hr class="cat-divider">
+        <div class="cat-desc">The sun goes down, Hikitory goes out</div>
+      </div>
+       <div class="cat-card">
+        <img class="cat-avatar" src="data:image/jpeg;base64,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" alt="D">
+        <div class="cat-name">killer</div>
+        <div class="cat-subtitle">Sisbki</div>
+        <hr class="cat-divider">
+        <div class="cat-desc">killer god odysseus</div>
+      </div>
+       <div class="cat-card">
+        <img class="cat-avatar" src="data:image/jpeg;base64,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" alt="D">
+        <div class="cat-name">miller</div>
+        <div class="cat-subtitle">Suck</div>
+        <hr class="cat-divider">
+        <div class="cat-desc">all hail Miller</div>
+      </div>
+  
+
+  </div>
+  <script>
+    // LOADER logic
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        const loader = document.getElementById('loaderOverlay');
+        if (loader) {
+          loader.style.opacity = '0';
+          loader.style.pointerEvents = 'none';
+          setTimeout(() => {
+            loader.style.display = 'none';
+          }, 700);
+        }
+      }, 2300);
+    });
+
+    // Scroll to characters-section when down arrow is clicked
+    document.querySelector('.scroll-down').addEventListener('click', function() {
+      document.querySelector('.characters-section').scrollIntoView({behavior:'smooth'});
+    });
+
+    // Show cards with animation on hero-menu button click
+    const menuBtns = document.querySelectorAll('.hero-menu-btn');
+    let cardsShown = false;
+    menuBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        if (!cardsShown) {
+          cardsShown = true;
+          const cards = document.querySelectorAll('.cat-card');
+          cards.forEach(card => card.classList.add('visible'));
+          document.querySelector('.characters-section').scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+
+    // Генерация "глитчей" на фоне
+    function generateGlitches() {
+      const glitchBg = document.getElementById('glitchBg');
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      glitchBg.innerHTML = '';
+      for (let i = 0; i < 48; ++i) {
+        const dot = document.createElement('div');
+        dot.className = 'glitch-dot';
+        dot.style.left = Math.random()*w + "px";
+        dot.style.top = Math.random()*h + "px";
+        dot.style.animationDelay = (Math.random()*2.7).toFixed(2) + "s";
+        dot.style.opacity = 0.13 + Math.random()*0.2;
+        dot.style.width = dot.style.height = `${1.2 + Math.random()*2.5}px`;
+        glitchBg.appendChild(dot);
+      }
+    }
+    window.addEventListener('resize', generateGlitches);
+    window.addEventListener('DOMContentLoaded', generateGlitches);
+  </script>
+
+</div><div id="copyrightscp" style="display:none!important;color:#FFFFFF!important;background-color:#FFFFFF!important;opacity:0!important;font-family:Arial,Tahoma,Geneva,Helvetica,sans-serif!important;font-size:1px!important;"><p style="display:none!important;color:#FFFFFF!important;background-color:#FFFFFF!important;opacity:0!important;font-family:Arial,Tahoma,Geneva,Helvetica,sans-serif!important;font-size:1px!important;">SiteCopy - <a style="display:none!important;color:#FFFFFF!important;background-color:#FFFFFF!important;opacity:0!important;font-family:Arial,Tahoma,Geneva,Helvetica,sans-serif!important;font-size:1px!important;" href="https://sitecopy.ru/" title="Онлайн-сервис, где можно скопировать любой сайт и лендинг по ссылке и бесплатно">онлайн-сервис, где можно скопировать любой сайт и лендинг по ссылке и бесплатно</a>. Копирование и создание точной копии Landing page делается целиком и полностью. Можно копировать чужой сайт или интернет-магазин конкурента и переделать под себя. Создать клон и дубликат можно на Тильде, Фигма, ВордПресс или Битрикс.</p><div style="display:none!important;color:#FFFFFF!important;background-color:#FFFFFF!important;opacity:0!important;font-family:Arial,Tahoma,Geneva,Helvetica,sans-serif!important;font-size:1px!important;"></div></div></body></html>
